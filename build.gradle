@@ -3,6 +3,6 @@ plugins {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.9'
-    testImplementation 'net.bytebuddy:byte-buddy:1.17.1'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'net.bytebuddy:byte-buddy:1.17.7'
 }
