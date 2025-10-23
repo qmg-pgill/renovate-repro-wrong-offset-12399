@@ -6,11 +6,21 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["org.testcontainers:testcontainers"],
+      "description": "Disable java updates against default registry",
+      "matchPackagePatterns": ["^org.testcontainers.*"],
       "matchManagers": ["gradle"],
       "enabled": false
     }
   ],
   "customManagers": [
+    {
+      "description": "Update java libraries without version prefixed by v",
+      "customType": "regex",
+      "fileMatch": ["\\.gradle$", "\\.xml$", "\\.kts$"],
+      "matchStrings": ["org.testcontainers:testcontainers:['\"]?(?<currentValue>[^'\"\\sv][^'\"\\s]*)['\"]?"],
+      "extractVersionTemplate": "^(?<version>\\S+)",
+      "depNameTemplate": "testcontainers/testcontainers-java",
+      "datasourceTemplate": "github-releases"
+    }
   ]
 }
